@@ -3,8 +3,10 @@ var express = require('express');
 
 var app = express();
 
+var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
-var port = process.env.PORT || 7000;
+var http = require('http');
 
 var myRouter = express.Router();
 //Creating a route
