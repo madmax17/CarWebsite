@@ -34,10 +34,15 @@ app.get('/home', function (req, res) {
     res.render('index');
 });
 
-app.listen(port, function (err) {
-    if (err) {
-        console.log(err);
-    }
+var server = http.createServer(function (request, response) {
+    console.log((new Date()) + ' Received request for ' + request.url);
+    response.writeHead(200, {
+        'Content-Type': 'text/plain'
+    });
+    response.write("Welcome to Node.js on OpenShift!\n\n");
+    response.end("Thanks for visiting us! \n");
+});
 
-    console.log('Running on ' + port);
+server.listen(port, ipaddress, function () {
+    console.log((new Date()) + ' Server is listening on port 8080');
 });
